@@ -109,7 +109,7 @@ export default function ContactSection() {
                   want to say hi, I'll try my best to get back to you!
                 </p>
                 <Button asChild size="lg" className="group">
-                  <Link href="mailto:alex@example.com">
+                  <Link href="mailto:abdussameea1@example.com">
                     <Mail className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
                     Send Message
                   </Link>
