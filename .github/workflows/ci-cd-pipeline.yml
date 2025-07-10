@@ -1,0 +1,75 @@
+name: CI/CD Pipeline (Next.js)
+
+on:
+  push:
+    branches:
+      - main # Workflow runs on pushes to the 'main' branch
+  pull_request:
+    branches:
+      - main # Workflow runs on pull requests targeting 'main'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Use a Linux environment
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Get your repository code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Use the Node.js version you're developing with.
+          # You can check your local version with `node -v`
+          node-version: '20' # <--- IMPORTANT: Adjust this if your project uses a different Node.js version (e.g., '18')
+          cache: 'npm' # Cache npm dependencies for faster builds
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps # Installs all packages listed in package.json
+        # Added --legacy-peer-deps for broader compatibility with some Next.js dependency trees.
+        # You can remove it if `npm install` works without it.
+
+      - name: Run ESLint Check
+        # Next.js projects typically have ESLint set up.
+        # This helps catch code quality issues early.
+        run: npm run lint # Assumes you have a 'lint' script in package.json
+
+      # Optional: Add unit/integration tests here if you have them
+      # - name: Run Tests
+      #   run: npm test # Uncomment if you have a 'test' script in package.json
+
+      - name: Build Next.js Project (Static Export)
+        # This command will generate the static files in the 'out' directory
+        run: npm run build # Assumes you have a 'build' script in package.json
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-static-build # Name of the artifact
+          path: out/ # <--- CRITICAL: This is the directory Next.js creates for static exports
+          retention-days: 7 # How long to keep the build files (optional)
+
+  deploy:
+    needs: build-and-test # This job will only run if 'build-and-test' succeeds
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # Only deploy if pushing to the 'main' branch
+
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-static-build # Must match the name used in 'Upload Build Artifact'
+          path: out/ # <--- CRITICAL: Download to the same 'out' directory
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # Action for deploying to GitHub Pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Built-in GitHub token for authentication
+          publish_dir: ./out # <--- CRITICAL: Publish the contents of the 'out' directory
+          # If your GitHub Pages is served from the `main` branch, ensure the branch in settings is `gh-pages`
+          # For user/organization pages (username.github.io), the branch is `main`.
+          # For project pages (username.github.io/repo-name), the default publish branch is `gh-pages`.
+          # This action defaults to `gh-pages` if not specified.
+          # Set `publish_branch: 'main'` if you want to publish directly to the `main` branch for user/org pages.
+          # You might need to set `publish_branch: 'gh-pages'` in your repository settings if not already.
+          # Or, if you want it to be served from `/docs` folder on main branch, set `publish_branch: 'main'` and `destination_dir: 'docs'`
