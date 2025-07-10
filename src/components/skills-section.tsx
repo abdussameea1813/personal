@@ -57,7 +57,7 @@ export default function SkillsSection() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {skillCategories.map((category, index) => (
+            {skillCategories.map((category) => (
               <Card key={category.title} className="group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-4 group-hover:text-primary transition-colors">
@@ -81,7 +81,7 @@ export default function SkillsSection() {
 
           <div className="mt-16 text-center">
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm always learning and exploring new technologies. Currently diving deep into Web3, AI integration, and
+              I&apos;m always learning and exploring new technologies. Currently diving deep into Web3, AI integration, and
               advanced animation techniques.
             </p>
           </div>

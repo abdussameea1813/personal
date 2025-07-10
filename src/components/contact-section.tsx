@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Github, Linkedin, Twitter, MapPin } from "lucide-react"
+import { Mail, Github, Linkedin, MapPin } from "lucide-react"
 
 const contactMethods = [
   {
@@ -105,8 +105,8 @@ export default function ContactSection() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Ready to work together?</h3>
                 <p className="text-muted-foreground mb-6">
-                  I'm always interested in new opportunities and exciting projects. Whether you have a question or just
-                  want to say hi, I'll try my best to get back to you!
+                  I&apos;m always interested in new opportunities and exciting projects. Whether you have a question or just
+                  want to say hi, I&apos;ll try my best to get back to you!
                 </p>
                 <Button asChild size="lg" className="group">
                   <Link href="mailto:abdussameea1@example.com">

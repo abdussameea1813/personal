@@ -36,11 +36,11 @@ export default function AboutSection() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a Full Stack Software Developer with 1 year of project experience, passionate about crafting robust, high-performance web applications with intelligent AI features. I specialize in React.js, Next.js, Node.js, AI integration, and database management with a focus on scalable solutions.
+                I&apos;m a Full Stack Software Developer with 1 year of project experience, passionate about crafting robust, high-performance web applications with intelligent AI features. I specialize in React.js, Next.js, Node.js, AI integration, and database management with a focus on scalable solutions.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me delving deeper into cloud technologies and exploring new advancements. I am dedicated to writing clean, efficient, and well-architected code that delivers exceptional user experiences and robust backend performance.
+                When I&apos;m not coding, you&apos;ll find me delving deeper into cloud technologies and exploring new advancements. I am dedicated to writing clean, efficient, and well-architected code that delivers exceptional user experiences and robust backend performance.
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-6">
