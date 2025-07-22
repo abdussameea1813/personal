@@ -12,7 +12,7 @@ const projects = [
   {
     title: "AI Workout and Diet Planner",
     description: "A fitness app that uses AI to generate personalized workout and diet plans.",
-    image: "/yeahbudy.png", // Replace this with your actual project thumbnail if you have one
+    image: "/yeahbuddy.png", // Replace this with your actual project thumbnail if you have one
     technologies: ["Next.js", "Tailwind CSS", "Shadcn ui", "Gemini LLM", "typescript", "convex", "Clerk", "vercel"],
     liveUrl: "https://fitness-ai-dusky.vercel.app/",
     githubUrl: "https://github.com/abdussameea1813/Fitness-AI"
@@ -21,7 +21,7 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description: "A full-stack e-commerce platform with product browsing, cart, checkout, and admin features. Built using Vite + React frontend, Express backend, and Stripe integration.",
-    image: "/ecommerce2.png", // Replace this with your actual project thumbnail if you have one
+    image: "/ecommerce.png", // Replace this with your actual project thumbnail if you have one
     technologies: ["React", "Vite", "Express", "MongoDB", "Framer Motion", "Tailwind CSS"],
     liveUrl: "https://e-commerce-ysvq.onrender.com/",
     githubUrl: "https://github.com/abdussameea1813/E-commerce"
