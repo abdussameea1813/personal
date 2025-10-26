@@ -16,8 +16,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  assetPrefix: isProd ? '/personal/' : '',
   basePath: isProd ? '/personal' : '',
+  assetPrefix: isProd ? '/personal/' : '',
 };
 
 export default nextConfig;
